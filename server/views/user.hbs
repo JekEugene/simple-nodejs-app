@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>{{userName}}</h3>
+    <a href="/user/certificates">certificates</a>
+    <a href="/user/applications">application</a>
+    <br><br>
+    <form action="/user/applications" method="POST">
+        <label for="patent_name">patent name:</label>
+        <input type="text" name="patent_name">
+        <label for="patent_type">patent type:</label>
+        <input type="text" name="patent_type">
+        <input type="hidden" name="userId" value="{{userId}}">
+        <button type="submit">send</button>
+    </form>
+</body>
+</html>

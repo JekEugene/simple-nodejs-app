@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    {{#if users.length}}
+    {{#each users}}
+
+        {{# if applications.length}}
+        {{# each applications}}
+                <h3>user name: {{user_name}} <br> patent name: {{patent_name}} <br> patent type: {{patent_type}} </h3> 
+                <form action="/admin/check" method="post">
+                    <input type="hidden" name="app_id" value="{{app_id}}">
+                    <input type="hidden" name="check_type" value="accept">
+                    <button type="submit">accept</button>
+                </form>
+                <br>
+                <form action="/admin/check" method="post">
+                    <input type="hidden" name="app_id" value="{{app_id}}">
+                    <input type="hidden" name="check_type" value="denied">
+                    <button type="submit">denied</button>
+                </form>
+                <hr>
+        {{/each}}
+        {{/if}}
+    {{/each}}
+    {{else}}   
+        <h3>No any applications</h3>
+    {{/if}}
+</body>
+</html>

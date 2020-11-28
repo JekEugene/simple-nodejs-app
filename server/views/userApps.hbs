@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    {{# if apps.length}}
+        <ol>
+            {{# each apps}}
+                <h3>patent name: {{patent_name}} <br> patent type: {{patent_type}} <br> is_checked: {{is_checked}} <br>
+                {{#if is_checked}}
+                    result: {{check_type}}
+                {{/if}}
+                </h3> 
+                <hr>
+            {{/each}}
+        </ol>
+    {{else}}
+    {{/if}}
+</body>
+</html>
