@@ -4,7 +4,6 @@ const Application = require("../models/application")
  
 exports.getUser = async function(req, res){
     try{
-        console.log(req.session.is_admin)
         if(req.session.is_admin===true){
             res.redirect("/admin")
         }
@@ -58,13 +57,21 @@ exports.getApps = async function (req, res){
 exports.postApps = async function(req, res){
     try{
         const {patent_name, patent_type, userId} = req.body;
-        await Application.create({
-            userId,
-            patent_name,
-            patent_type,
-            is_checked: false
-        })
-        res.redirect("/user")
+        const same = await Application.findOne({where:{patent_name: patent_name}})
+        if(same === null && patent_name.trim() != "" && patent_type.trim() != ""){
+            await Application.create({
+                userId,
+                patent_name,
+                patent_type,
+                is_checked: false
+            })
+            console.log(same)
+            res.redirect("/user")
+        } else {
+            res.redirect("/user")
+        }
+    
+        
     } catch (e) {
         console.log(e)
     }

@@ -1,6 +1,5 @@
 const express = require("express")
     ,bodyParser = require('body-parser')
-    //,Sequelize = require("sequelize")
     ,db = require("./config/database")
     ,hbs = require("handlebars")
     ,session = require('express-session')
@@ -23,8 +22,6 @@ app.use(session({
 }));
 
 app.set("view engine", "hbs");
-//hbs.registerPartials(__dirname + "/views/partials");
-//app.set("views", "templates"); // установка пути к представлениям
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

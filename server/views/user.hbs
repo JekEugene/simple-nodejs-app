@@ -7,7 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h3>{{userName}}</h3>
+    <h3>{{userName}} 
+        <form action="/logout" method="post">
+            <button type="submit">logout</button>
+        </form>
+    </h3>
     <a href="/user/certificates">certificates</a>
     <a href="/user/applications">application</a>
     <br><br>

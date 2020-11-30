@@ -8,17 +8,19 @@ exports.getApplications = async function(req, res){
             res.redirect("/user")
         }
         const users = await User.findAll({ where: {isAdmin: false},  include: Application});
-        if(users.length){
+        const apps = await Application.findAll({ where: {is_checked: false}});
+        if(apps.length){
             const usersApp = users.map((user)=>{
                 return {
                     applications: user.applications.map((application)=>{
-                        const {patent_name, patent_type, is_checked, app_id} = application.dataValues
+                        
+                        const {patent_name, patent_type, is_checked, id} = application.dataValues
                         return {
                             user_name: user.name,
                             patent_name,
                             patent_type,
                             is_checked,
-                            app_id,
+                            app_id: id
                         }
                     }).filter((application) => application.is_checked===false)
                 }
@@ -29,7 +31,7 @@ exports.getApplications = async function(req, res){
             res.render("admin.hbs", hbsObject);
         } else {
             hbsObject = {
-                users
+                users: []
             }
             res.render("admin.hbs", hbsObject);
         }
