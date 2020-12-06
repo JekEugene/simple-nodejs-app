@@ -2,7 +2,7 @@ const {Router} = require("express");
 const homeController = require("../controllers/homeController.js");
 const homeRouter = Router();
  
-homeRouter.get("/", homeController.loginPage);
+homeRouter.get("/", homeController.homePage);
 
 homeRouter.post("/login", homeController.login);
 homeRouter.post("/register", homeController.register);
